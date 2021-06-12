@@ -1,0 +1,21 @@
+version: "3"
+services:
+  nms:
+    image: nms
+    ports:
+      - "8585:8585"
+    networks:
+      - nms-network
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - nms-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=nms  
+
+networks:
+  employee-mysql: 
